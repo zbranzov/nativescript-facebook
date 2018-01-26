@@ -18,9 +18,9 @@ jobs:
           name: prepare
           command: |
             ruby -v
-            sudo gem install bundler
+            #sudo gem install bundler
             #bundle update
-            bundle install
+            #bundle install
             sudo gem install cocoapods
             sudo gem install xcodeproj
             pod setup
