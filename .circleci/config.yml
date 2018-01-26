@@ -15,7 +15,7 @@ jobs:
             ls
             sudo gem install bundler
             bundle install
-            bundle exec sudo gem install CocoaPods
+            #bundle exec sudo gem install CocoaPods
             cd demo && npm run ci.ios.build
       - run:
           name: prepare
