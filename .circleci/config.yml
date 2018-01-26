@@ -14,8 +14,9 @@ jobs:
           command: |
             sudo gem install bundler
             bundle install
-            sudo gem install xcodeproj
             sudo gem install cocoapods
+            sudo gem install xcodeproj
+            pod setup
             echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
             npm install -g nativescript
             tns usage-reporting disable
