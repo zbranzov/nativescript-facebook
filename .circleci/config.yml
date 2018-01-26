@@ -10,17 +10,18 @@ jobs:
       #     command: xcrun instruments -w "iPhone 6 (10.3.1) [" || true
       #     background: true
       - run:
-          name: prepare
-          command: |
-            npm install -g nativescript
-            tns usage-reporting disable
-            tns error-reporting disable
-      - run:
           name: build
           command: |
             ls
             bundle exec pod install
             cd demo && npm run ci.ios.build
+      - run:
+          name: prepare
+          command: |
+            npm install -g nativescript
+            tns usage-reporting disable
+            tns error-reporting disable
+      
 
 workflows:
   version: 2
