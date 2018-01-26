@@ -10,6 +10,13 @@ jobs:
       #     command: xcrun instruments -w "iPhone 6 (10.3.1) [" || true
       #     background: true
       - run:
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run:
+          name: Install CocoaPods
+          command: pod install --verbose
+      - run:
           name: prepare
           command: |
             sudo gem install bundler
