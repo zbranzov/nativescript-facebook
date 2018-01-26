@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: pre-start simulator
-          command: echo "WTF"
+          command: echo "WTF1"
 
 workflows:
   version: 2
