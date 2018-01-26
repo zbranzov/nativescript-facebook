@@ -13,6 +13,8 @@ jobs:
           name: build
           command: |
             ls
+            sudo gem install bundler
+            bundle install
             bundle exec pod install
             cd demo && npm run ci.ios.build
       - run:
