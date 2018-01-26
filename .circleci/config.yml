@@ -19,7 +19,7 @@ jobs:
           command: |
             ruby -v
             sudo gem install bundler
-            bundle update
+            #bundle update
             bundle install
             sudo gem install cocoapods
             sudo gem install xcodeproj
