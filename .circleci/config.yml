@@ -7,7 +7,19 @@ jobs:
       - checkout
       - run:
           name: pre-start simulator
-          command: echo "WTF1"
+          command: xcrun instruments -w "iPhone 7 (10.3) [" || true
+          background: true
+      - run:
+          name: prepare
+          command: |
+            npm install -g nativescript
+            tns usage-reporting disable
+            tns error-reporting disable
+      - run:
+          name: build
+          command: |
+            pwd
+            cd demo && npm run ci.ios.build
 
 workflows:
   version: 2
