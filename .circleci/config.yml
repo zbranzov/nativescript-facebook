@@ -5,10 +5,10 @@ jobs:
       xcode: "9.0"
     steps:
       - checkout
-      - run:
-          name: pre-start simulator
-          command: xcrun instruments -w "iPhone 7 (10.3.1) [" || true
-          background: true
+      # - run:
+      #     name: pre-start simulator
+      #     command: xcrun instruments -w "iPhone 6 (10.3.1) [" || true
+      #     background: true
       - run:
           name: prepare
           command: |
@@ -19,6 +19,7 @@ jobs:
           name: build
           command: |
             ls
+            bundle exec pod install
             cd demo && npm run ci.ios.build
 
 workflows:
