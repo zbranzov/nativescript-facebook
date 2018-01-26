@@ -2,7 +2,7 @@ version: 2
 jobs:
   build-and-test:
     macos:
-      xcode: "9.0"
+      xcode: "9.2"
     steps:
       - checkout
       # - run:
@@ -10,16 +10,11 @@ jobs:
       #     command: xcrun instruments -w "iPhone 6 (10.3.1) [" || true
       #     background: true
       - run:
-          name: Fetch CocoaPods Specs
-          command: |
-            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-      - run:
-          name: Install CocoaPods
-          command: pod install --verbose
-      - run:
           name: prepare
           command: |
+            ruby -v
             sudo gem install bundler
+            bundle update
             bundle install
             sudo gem install cocoapods
             sudo gem install xcodeproj
@@ -33,6 +28,8 @@ jobs:
           command: |
             #bundle exec sudo gem install CocoaPods
             cd demo && npm run ci.ios.build
+      - store_artifacts:
+          path: /Users/distiller/.npm/_logs
       
       
 
