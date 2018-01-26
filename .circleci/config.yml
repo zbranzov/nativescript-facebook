@@ -12,15 +12,17 @@ jobs:
       - run:
           name: prepare
           command: |
+            sudo gem install bundler
+            bundle install
+            sudo gem install xcodeproj
+            sudo gem install cocoapods
+            echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
             npm install -g nativescript
             tns usage-reporting disable
             tns error-reporting disable
       - run:
           name: build
           command: |
-            ls
-            sudo gem install bundler
-            bundle install
             #bundle exec sudo gem install CocoaPods
             cd demo && npm run ci.ios.build
       
