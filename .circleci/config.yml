@@ -14,14 +14,14 @@ jobs:
           command: |
             brew install ruby
             brew link --overwrite ruby
-      #- run:
-      #    name: prepare
-       #   command: |
+      - run:
+          name: prepare
+          command: |
        #     ruby -v
       #      #sudo gem install bundler
        #     #bundle update
         #    #bundle install
-         #   sudo gem install cocoapods
+            sudo gem install cocoapods
          #   sudo gem install xcodeproj
          #   pod setup
          #   echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -30,11 +30,20 @@ jobs:
          #   tns error-reporting disable
          # cache_directories:
           #  - "Pods/"
-     # - run:
-     #     name: build
-     #     command: |
+      - run:
+          name: build
+          shell: /bin/sh
+          command: |
      #       #bundle exec sudo gem install CocoaPods
-     #       cd demo && npm run ci.ios.build
+            cd demo
+            npm run build.plugin
+            tns build ios | echo "PASS"
+      - run:
+          name: build pass
+          command: |
+            cd demo
+            npm run build.plugin
+            tns build ios
       - store_artifacts:
           path: /Users/distiller/.npm/_logs
       
