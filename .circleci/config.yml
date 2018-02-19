@@ -17,11 +17,12 @@ jobs:
       - run:
           name: prepare
           command: |
+            sudo gem install cocoapods
        #     ruby -v
       #      #sudo gem install bundler
        #     #bundle update
         #    #bundle install
-            sudo gem install cocoapods
+         #   sudo gem install cocoapods
          #   sudo gem install xcodeproj
          #   pod setup
          #   echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -34,7 +35,6 @@ jobs:
           name: build
           shell: /bin/sh
           command: |
-     #       #bundle exec sudo gem install CocoaPods
             cd demo
             npm run build.plugin
             tns build ios | echo "PASS"
