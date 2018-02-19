@@ -40,16 +40,17 @@ jobs:
           command: |
             cd demo
             npm run build.plugin
-            tns build ios | echo "PASS"
+            tns build ios
+            echo "PASS"
       - run: 
           shell: /bin/sh
-          command:
-            cd demo && tns build ios | echo "PASS"
+          command: cd demo | tns build ios | echo "PASS"
       - run: 
           shell: /bin/sh
           command: |
             cd demo
-            tns build ios | echo "PASS"
+            tns build ios
+            echo "PASS"
       - run:
           name: build pass
           command: |
