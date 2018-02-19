@@ -18,6 +18,9 @@ jobs:
           name: prepare
           command: |
             sudo gem install cocoapods
+            npm install -g nativescript
+            tns usage-reporting disable
+            tns error-reporting disable
        #     ruby -v
       #      #sudo gem install bundler
        #     #bundle update
