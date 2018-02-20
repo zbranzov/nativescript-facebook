@@ -5,12 +5,8 @@ jobs:
       xcode: "9.2.0"
     steps:
       - checkout
-      # - run:
-      #     name: pre-start simulator
-      #     command: xcrun instruments -w "iPhone 6 (10.3.1) [" || true
-      #     background: true
       - run:
-          name: ruby muby
+          name: ruby
           command: |
             brew install ruby
             brew link --overwrite ruby
@@ -21,21 +17,8 @@ jobs:
             npm install -g nativescript
             tns usage-reporting disable
             tns error-reporting disable
-       #     ruby -v
-      #      #sudo gem install bundler
-       #     #bundle update
-        #    #bundle install
-         #   sudo gem install cocoapods
-         #   sudo gem install xcodeproj
-         #   pod setup
-         #   echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-         #   npm install -g nativescript
-         #   tns usage-reporting disable
-         #   tns error-reporting disable
-         # cache_directories:
-          #  - "Pods/"
       - run:
-          name: build
+          name: first build fails
           shell: /bin/sh
           command: |
             cd demo
@@ -43,25 +26,14 @@ jobs:
             tns build ios
             echo "PASS"
       - run: 
-          shell: /bin/sh
-          command: cd demo | tns build ios | echo "PASS"
-      - run: 
+          name: build pass
           shell: /bin/sh
           command: |
             cd demo
             tns build ios
             echo "PASS"
-      - run:
-          name: build pass
-          command: |
-            cd demo
-            set +e
-            tns build ios
-            echo "YEA"
       - store_artifacts:
           path: /Users/distiller/.npm/_logs
-      
-      
 
 workflows:
   version: 2
